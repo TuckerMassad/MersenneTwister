@@ -20,7 +20,7 @@ import re
 symbols = "!@#$%^&*()-+_=`~|/?><.,"
 possibleLetters = string.ascii_letters + string.digits + symbols
 
-#starter code given by Matt to create a hash
+#create an initial hash
 def createHash():
     f = open("test_pass.txt","w")
     password = "fish"
