@@ -21,23 +21,23 @@ symbols = "!@#$%^&*()-+_=`~|/?><.,"
 possibleLetters = string.ascii_letters + string.digits + symbols
 
 #create an initial hash
-def createHash():
+def createHash(inputpass):
     f = open("test_pass.txt","w")
-    password = "fish"
+    password = inputpass
     salt = os.urandom(16)
     hash = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), salt, 100000)
-    f.write("2\n")
-    f.write("fish\n")
+    f.write("1\n")
+    f.write(password+"\n")
     f.write(binascii.hexlify(salt).decode('utf-8') + "\n")
     f.write(binascii.hexlify(hash).decode('utf-8') + "\n")
     print("DONE!")
 
 
 #function to check if an input hash code is the same as creating a hash with the provided pw + salt
-def checkHash():
+def checkHash(inputpass):
     f = open("test_pass.txt", "r")
     allLines = []
-    password = "fish"
+    password = inputpass
     for line in f:
         allLines.append(line)
     salt = allLines[2]
@@ -168,7 +168,6 @@ def main():
 
 #print(checkContainsLetters(["o", "p", "k"], "angaroop"))
 #createHash()
-print(main())
 
 #print(crackPassMethodThree("test_pass.txt"))
 #print(crackMethodOne("k@sh"))

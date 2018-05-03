@@ -108,7 +108,7 @@ def decrypt(key, vector, ciphertext):
 
     for letter in ciphertext:
         newNum = nextInt()
-        print("Decrypting letter ", letter, "with current seed ", newNum)
+        print("Decrypting letter " + str(letter) + "with current seed " + str(newNum))
         letter = letter ^ newNum
         finalReturn.append(unhexlify(format(letter, '02x')))
 
